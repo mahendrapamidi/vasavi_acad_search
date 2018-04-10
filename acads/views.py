@@ -3,8 +3,20 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
 from acads.models import Document
-from acads.forms import DocumentForm
+from acads.forms import DocumentForm,Wru
 
+def index(request):
+        form=Wru(request.POST)
+        if request.method == 'POST':
+            if form.is_valid():
+              if form.fields['display_type'].choices[0] in request.POST:
+                print (form.fields['display_type'].choices[0])
+                return redirect(simple_upload)
+              elif form.fields['display_type'].choices[1] in request.POST:
+                print ("sss")
+                return redirect(simple_upload)
+        return render(request, 'acads/index.html', {'form': form})
+    
 
 def home(request):
     documents = Document.objects.all()
