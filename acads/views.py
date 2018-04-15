@@ -6,21 +6,17 @@ from acads.models import Document
 from acads.forms import DocumentForm,Wru
 
 def index(request):
-        form=Wru(request.POST)
-        if request.method == 'POST':
-            if form.is_valid():
-              if form.fields['display_type'].choices[0] in request.POST:
-                print (form.fields['display_type'].choices[0])
-                return redirect(simple_upload)
-              elif form.fields['display_type'].choices[1] in request.POST:
-                print ("sss")
-                return redirect(simple_upload)
-        return render(request, 'acads/index.html', {'form': form})
+        
+        return render(request, 'acads/index.html')
     
 
 def home(request):
     documents = Document.objects.all()
     return render(request, 'acads/home.html', { 'documents': documents })
+def faculty (request):
+    documents = Document.objects.all()
+    return render(request, 'acads/faculty.html', { 'documents': documents })    
+
 
 
 def simple_upload(request):
@@ -43,6 +39,5 @@ def model_form_upload(request):
             return redirect('home')
     else:
         form = DocumentForm()
-    return render(request, 'acads/model_form_upload.html', {
-        'form': form
-    })
+    Sub=["CSE","IT","EEE","ECE","CIV","MECH"]
+    return render(request, 'acads/model_form_upload.html', {'form': form,'subject_code':Sub})

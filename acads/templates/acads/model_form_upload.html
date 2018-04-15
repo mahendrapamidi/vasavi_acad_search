@@ -1,6 +1,14 @@
 {% extends 'acads/base.html' %}
 
 {% block content %}
+<form>
+                <p><label for="id_department">Department:</label> <select name="department" required id="id_department">
+                  <option value="" selected>---------</option>
+                  {%for sub in subject_code%}
+                      <option value="{{sub}}">{{sub}}</<option>
+                  {%endfor%}
+                </select>
+                </form>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}

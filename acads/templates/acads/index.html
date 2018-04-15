@@ -3,9 +3,29 @@
 {% load static %}
 
 {% block content %}
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.display_type }}
-    <input type="submit" >
-  </form>
+<input type="radio" name="radio" id="yes"><strong>Student</strong> 
+<br>
+<input type="radio" name="radio" id="no" checked="checked"><strong>Faculty     
+
+<br>
+<input type="submit" id="submit" value="Submit" name="submit" />
+</form>
+
+<script>
+var submitBtn = document.getElementById("submit");
+var termsChk = document.getElementById("yes");
+
+
+submitBtn.addEventListener("click", function() {
+if (termsChk.checked === true )
+
+{
+    window.location="home"
+} else {
+    window.location="faculty"
+}
+return false;
+});
+</script>
+
 {% endblock %}
