@@ -6,7 +6,7 @@ from .models import Document
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ('description', 'document','file_name','subject_code','department_code')
+        fields = ('description', 'document','file_name','subject_code','department_code','year_code')
 
 DISPLAY_CHOICES = (
     (1, "Student"),

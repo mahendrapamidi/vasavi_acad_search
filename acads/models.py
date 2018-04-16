@@ -6,7 +6,7 @@ from django.conf import settings
 
 
 def get_file_path(instance,filename):
-    return (instance.department_code+'/'+instance.subject_code+'/'+filename)
+    return (settings.MEDIA_ROOT+'/'+instance.department_code+'/'+instance.year_code+'/'+filename)
 # # class Subject(models.Model):
 #     department_code=models.CharField(max_length=2,blank=False)
 #     subject_code=models.CharField(max_length=7,blank=False)
@@ -22,12 +22,19 @@ department = (
 	('ece','ECE'),
 	('civil','CIV'),
 )
+year = (
+    ('1','1'),
+    ('2','2'),
+    ('3','3'),
+    ('4','4'),
+)
 class Document(models.Model):
     description = models.CharField(max_length=255, blank=True)
     file_name=models.CharField(max_length=255, blank=True)
     document= models.FileField(upload_to=get_file_path,blank=False)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     department_code=models.CharField(max_length=3,choices=department,default='it')
+    year_code=models.CharField(max_length=1,choices=year,default='1')
     subject_code=models.CharField(max_length=7,blank=False)
     subject_name=models.CharField(max_length=100,blank=False)
     def get_relative_path(self):

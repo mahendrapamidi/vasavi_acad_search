@@ -10,8 +10,9 @@ urlpatterns = [
     url(r'^uploads/simple/$', views.simple_upload, name='simple_upload'),
     url(r'^uploads/form/$', views.model_form_upload, name='model_form_upload'),
     url(r'^admin/', admin.site.urls),
+    url(r'^success/',views.success),
     url(r'^faculty/$', views.faculty, name='faculty'),
-    
+    url(r'^files/(?P<dept>\D+)/(?P<year>\w+)/$',views.get_files),
 ]
 
 if settings.DEBUG:
