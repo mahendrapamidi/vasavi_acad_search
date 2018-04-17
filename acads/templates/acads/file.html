@@ -1,5 +1,6 @@
 <!DOCTYPE>
 <html>
+<head>
 <title>
   acad_search/{{dept}}/{{year}}
 </title>
@@ -7,22 +8,52 @@
 <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"  media="screen,projection"/>
 <link type="text/css" rel="stylesheet" href="../static/style.css"  media="screen,projection"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <style>
+    a {
+    background-color:black;
+  box-shadow: 0 5px 0 darkred;
+  color: white;
+  padding:2px 2px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a:hover {
+  background-color: #ce0606;
+  cursor: pointer;
+}
+
+a:active {
+  box-shadow: none;
+  top: 5px;
+}
+    h1
+       {
+           font-family: cursive;
+           color: brown;
+       }
+    body
+       {
+           background: #ff7e5f;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #feb47b, #ff7e5f);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #feb47b, #ff7e5f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+       }
+    </style>
+    </head>
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    
   <ul id="dropdown1" class="dropdown-content">
   
 </ul>
-  <nav>
-    <div class="nav-wrapper grey darken-1">
-      <a href="#" class="brand-logo">Welcome to Vasavi Acad-Search</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class="active" ><a href="#">{{dept}} {{year}}</a></li>
+  <div class="page-header">
         
-      </ul>
+        <h1><center>Vasavi Acad Search</center></h1>
     </div>
-  </nav>
-  <h1>You've reached {{dept}} {{year}}</h1>
+  <h3>You've reached {{dept}} {{year}}</h3>
  <!--  {%if files%}
   <ul>
       {%for file in files%}
@@ -35,9 +66,11 @@
     {% for obj in documents %}
       <li>
         <a href="{{ obj.document.url }}">{{ obj.document.name }}</a>
-        <small>(Uploaded at: {{ obj.uploaded_at }})</small>
+        <small><br>(Uploaded at: {{ obj.uploaded_at }})<br></small>
+        
       </li>
     {% endfor %}
+    <a href="{% url 'index' %}">Return Home</a>
 </body>
 
 </html>

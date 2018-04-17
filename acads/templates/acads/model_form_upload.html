@@ -1,13 +1,47 @@
-{% extends 'acads/base.html' %}
+{% load static %}
 
-{% block content %}
-<form>
-                <p><label for="id_department">Department:</label> <select name="department" required id="id_department">
-                  <option value="" selected>---------</option>
-                  {%for sub in subject_code%}
-                      <option value="{{sub}}">{{sub}}</<option>
-                  {%endfor%}
-                </select>
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+<!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+    <style>
+    form
+    {
+      
+      position: relative;
+      left:38%;
+        top:3%;
+        font-family: cursive;
+        
+    }
+    body
+        {
+            background: #CC95C0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+        #rhome
+        {
+            display: flex;
+            justify-content:   center;
+            align-items: center;
+        }
+   
+</style>
+</head>
+
+<body>
+<div class="page-header">
+        <a href="{% url 'index' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        <h1><a href="/"><center>Vasavi Acad Search</center></a></h1>
+    </div>
+
+
                 </form>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -15,5 +49,5 @@
     <button type="submit">Upload</button>
   </form>
 
-  <p><a href="{% url 'home' %}">Return to home</a></p>
-{% endblock %}
+  <p id="rhome"><a href="{% url 'home' %}">Return to home</a></p>
+</body>

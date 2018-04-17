@@ -1,11 +1,54 @@
-{% extends 'acads/base.html' %}
+
 
 {% load static %}
 
-{% block content %}
-<input type="radio" name="radio" id="yes"><strong>Student</strong> 
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+<!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+    <style>
+    body
+{background: #FF512F;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #DD2476, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+        input
+        {
+            position: relative;
+            left:10%;
+        }
+        #student
+        {
+            position: relative;
+            left:10%;
+            font-size: 20px;
+            font-family:sans-serif;
+        }
+        #Faculty
+        {
+            position: relative;
+            left:10%;
+            font-size: 20px;
+            font-family:sans-serif;
+        }
+
+</style>
+</head>
+
+<body>
+<div class="page-header">
+        <a href="{% url 'index' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        <h1><a href="/"><center>Vasavi Acad Search</center></a></h1>
+    </div>
+    <input type="radio" name="radio" id="yes" ><label id="student" for="student"><strong>Student</strong></label> 
 <br>
-<input type="radio" name="radio" id="no" checked="checked"><strong>Faculty     
+<br>
+<input type="radio" name="radio" id="no" checked="checked"><label id="faculty" for="faculty"><strong>Faculty</strong></label>   
 
 <br>
 <input type="submit" id="submit" value="Submit" name="submit" />
@@ -22,10 +65,11 @@ if (termsChk.checked === true )
 {
     window.location="home"
 } else {
-    window.location="faculty"
+    window.location="uploads/form/"
 }
 return false;
 });
 </script>
 
-{% endblock %}
+</body>
+</html>
